@@ -11,40 +11,23 @@ router.get("/", function(req, res, next) {
     .catch(err => res.status(500).send(err));
 });
 
-/* // GET one student
-//async await solution - error message appears- why?
- router.get("/:id", async (req, res, next) {
-  //your code here
-  //console.log("REQ.PARAMS.STUDENT_ID:", req.params); // req.params is an object
-  const { student_id } = req.params; // destructuring
-  try {
-    const result = await db(`SELECT * FROM students WHERE id = ("${req.params.student_id}");`);
-    res.send(result.data);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
-
-//.then solution for GET one student
-
-router.get("/:student_id", function(req, res) {
-  const foundId = Number(req.params.student_id);
-  db(`SELECT * FROM students WHERE id = ("${foundId}") ORDER BY id ASC;`)
+//.then solution for GET one hotel
+router.get("/:hotel_id", function(req, res) {
+  const foundId = Number(req.params.hotel_id);
+  db(`SELECT * FROM hotels WHERE id = ("${foundId}") ORDER BY id ASC;`)
     .then(results => {
       res.send(results.data);
     })
     .catch(err => res.status(500).send(err));
 });
 
-// INSERT a new student into the DB
+//INSERT a new hotel into the DB
 router.post("/", async (req, res, next) => {
-  //your code here
-  //console.log("REQ.BODY:", req.body); // req.body is an object
-  try {
+try {
     await db(
-      `INSERT INTO students (firstname, lastname) VALUES ("${req.body.firstname}", "${req.body.lastname}");`
+      `INSERT INTO hotels (image_URL, name, location, description, price_range, yoga, spa) VALUES ("${req.body.image_URL}", "${req.body.name}", "${req.body.location}" );`
     );
-    const result = await db("SELECT * FROM students ORDER BY id ASC;"); //await second query,
+    const result = await db("SELECT * FROM hotels ORDER BY id ASC;"); //await second query,
     //store the result of this await in this variable
     res.send(result.data);
   } catch (err) {
@@ -52,12 +35,17 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// DELETE a student from the DB
-router.delete("/:id", async (req, res, next) => {
-  //your code here
-  const foundId = +req.params.student_id; //the + sign converts the string to a number
-  await db(`DELETE from students WHERE id = ("${foundId}");`);
-  const result = await db("SELECT * FROM students ORDER BY id ASC,");
-}); */
+// DELETE a hotel from the DB
+router.delete("/:hotel_id", async (req, res, next) => {
+  try {
+    const foundId = +req.params.hotel_id; //the + sign converts the string to a number
+    await db(`DELETE from hotels WHERE id = "${foundId}";`);
+    const result = await db("SELECT * FROM hotels ORDER BY id ASC;");
+    res.send(result.data);
+  
+} catch (err) {
+    res.status(500).send(err);
+  }
+}); 
 
-module.exports = router;
+module.exports = router
