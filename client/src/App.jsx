@@ -3,8 +3,9 @@ import "./App.css";
 import HotelForm from "./components/HotelForm";
 import Checkbox from "./components/Checkbox";
 import HotelsList from "./components/HotelsList";
-
-
+import NavBar from "./components/NavBar";
+import HotelCard from"./components/HotelCard";
+import SearchHotels from './components/SearchHotels';
 
 
  function App() {
@@ -12,35 +13,30 @@ import HotelsList from "./components/HotelsList";
   const [currentHotel, setCurrentHotel] = useState(null);
   
 
-
-  useEffect(() => {
-    getHotels();
-}, []);
-
-const getHotels = () => {
-  fetch("/api/hotels")
-    .then((response) => response.json())
-    .then((hotels) => {
-      setHotels(hotels);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
-
-
 return (
-    
+  
   <div className="container mt-2">
       <div className="container text-center">
-        <h1>Lotus retreats</h1> <i class="fa-solid fa-spa"></i>
+      
+      <h1>Lotus retreats</h1> <i class="fa-solid fa-spa"></i>
         <p>Disconnect and recharge</p>
-        <HotelForm getHotels={getHotels} />
-      </div>
-      </div>
-   
+        </div>
+        <div>
+        <HotelForm getHotels={setHotels} />
+        </div>
+        
+        <HotelsList />
+        {/* <HotelCard /> */}
+        {/* <NavBar /> */}
+        </div>
+        
+
+
+        
+        
   );
 }
+
 
       
 

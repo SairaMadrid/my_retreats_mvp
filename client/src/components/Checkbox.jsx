@@ -1,8 +1,6 @@
-import React from 'react'
-
- function Checkbox() {
-
-  const [checked, setChecked] = useState(false);
+ import { useState } from 'react';
+ 
+function Checkbox () {
   const [checkedOne, setCheckedOne] = useState(false);
   const [checkedTwo, setCheckedTwo] = useState(false);
 
@@ -31,8 +29,9 @@ import React from 'react'
         />   
         <p>Is "Spa" checked? {checked.toString()}</p>   
                 </div>
-)};
+);
 
+  } 
 
 /* const Checkbox = ({ label, value, onChange }) => {
     return (
@@ -44,3 +43,4 @@ import React from 'react'
   }; */
 
   export default Checkbox;
+ 
