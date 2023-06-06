@@ -11,10 +11,32 @@ router.get("/", function(req, res, next) {
     .catch(err => res.status(500).send(err));
 });
 
+
+
 //.then solution for GET one hotel
 router.get("/:hotel_id", function(req, res) {
   const foundId = Number(req.params.hotel_id);
   db(`SELECT * FROM hotels WHERE id = ("${foundId}") ORDER BY id ASC;`)
+    .then(results => {
+      res.send(results.data);
+    })
+    .catch(err => res.status(500).send(err));
+});
+
+//.then solution for GET hotels by location
+router.get("/:hotel_location", function(req, res) {
+  const foundLocation = Text(req.params.location);
+  db(`SELECT * FROM hotels WHERE location = ("${foundLocation}") ORDER BY id ASC;`)
+    .then(results => {
+      res.send(results.data);
+    })
+    .catch(err => res.status(500).send(err));
+});
+
+//.then solution for GET hotels by price range
+router.get("/:hotel_price_range", function(req, res) {
+  const foundPriceRange = Text(req.params.price_range);
+  db(`SELECT * FROM hotels WHERE price_range = ("${foundPriceRange}") ORDER BY id ASC;`)
     .then(results => {
       res.send(results.data);
     })
