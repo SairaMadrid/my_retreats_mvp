@@ -13,12 +13,15 @@ Run `npm install` in the project folder to install dependencies related to Expre
 ### Database Prep
 
 - Access the MySQL interface in your terminal by running `mysql -u root -p`
+- Create a new database called retreats: `create database retreats`
 - Refer to the a `.env` file in the project folder of this repository containing the MySQL authentication information for MySQL user. 
 - The database is called 'hotels'.
 
 - Run `npm run migrate` in the project folder of this repository, in a new terminal window. This will create a table called 'hotels' in your database.
 
-- Make sure you understand how the `hotels` table is constructed. In your MySQL console, you can run `use retreats;` and then `describe hotels;` to see the structure of the students table.
+- Make sure you understand how the `hotels` table is constructed. In your MySQL console, you can run `use retreats;` and then `describe hotels;` to see the structure of the hotels table.
+
+- Go to images in the project directory to see a screenshot of the database (Database_screenshot.png)
 
 ### Development
 
