@@ -41,7 +41,12 @@ function HotelForm({ searchHotel }) {
               <option value="Amsterdam">Amsterdam</option>
               <option value="Berlin">Berlin</option>
             </select>
-            <button id="buttonLocation">Go!</button>
+            <button
+              id="buttonLocation"
+              className="btn btn-outline-primary mt-1"
+            >
+              Go!
+            </button>
 
             <div className="col">
               {/* <label className="text-start mx-1 form-label">Price range:</label>
@@ -77,9 +82,9 @@ function HotelForm({ searchHotel }) {
                 </div>
               </div>
             </div>
-            <button type="submit" className="btn btn-outline-primary mt-1">
+            {/* <button type="submit" className="btn btn-outline-primary mt-1">
               Find hotels
-            </button>
+            </button> */}
             <br />
           </div>
         </div>
