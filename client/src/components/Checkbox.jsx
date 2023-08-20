@@ -1,46 +1,40 @@
- import { useState } from 'react';
- 
-function Checkbox () {
+import { useState } from "react";
+
+function Checkbox() {
   const [checkedOne, setCheckedOne] = useState(false);
   const [checkedTwo, setCheckedTwo] = useState(false);
-
 
   const handleChangeOne = () => {
     setCheckedOne(!checkedOne);
   };
-  
+
   const handleChangeTwo = () => {
     setCheckedTwo(!checkedTwo);
   };
 
-
   return (
     <div>
-    <Checkbox
-                label="Yoga onsite?"
-                value={checkedOne}
-                onChange={handleChangeOne}
-                />
-               <p>Is "Yoga onsite" checked? {checked.toString()}</p>
-        <Checkbox
-               label="Spa?"
-               value={checkedTwo}
-               onChange={handleChangeTwo}     
-        />   
-        <p>Is "Spa" checked? {checked.toString()}</p>   
-                </div>
-);
-
-  } 
-
-/* const Checkbox = ({ label, value, onChange }) => {
-    return (
       <label>
-        <input type="checkbox" checked={value} onChange={onChange} />
-        {label}
+        <input
+          type="checkbox"
+          checked={checkedOne}
+          onChange={handleChangeOne}
+        />
+        Yoga onsite?
       </label>
-    );
-  }; */
+      <p>Is "Yoga onsite" checked? {checkedOne.toString()}</p>
 
-  export default Checkbox;
- 
+      <label>
+        <input
+          type="checkbox"
+          checked={checkedTwo}
+          onChange={handleChangeTwo}
+        />
+        Spa?
+      </label>
+      <p>Is "Spa" checked? {checkedTwo.toString()}</p>
+    </div>
+  );
+}
+
+export default Checkbox;

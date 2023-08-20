@@ -1,20 +1,22 @@
+import { useState } from "react";
+import SearchInput from "./SearchInput"; // Import the SearchInput component
+import HotelList from "./HotelList"; // Import the HotelList component
 
- import { useState } from 'react';
+export default function SearchHotels({ hotels }) {
+  const [searchText, setSearchText] = useState("");
+  const foundHotels = filterHotels(hotels, searchLocationText); // Corrected variable name
 
-export default function SearchHotels() {
-const [searchLocationText, setSearchText] = useState('');
-const foundHotels = filterHotels(hotels, searchText);
-  
-return (
+  return (
     <div>
-    <SearchInput
-        value={searchLocationText}
-        onChange={newText => setSearchText(newText)} />
-    
-    <HotelList
-        hotels={foundHotels}
-        emptyHeading={`No matches for “${searchText}”`} />
-        </div>
-  ) 
+      <SearchInput
+        value={searchText}
+        onChange={(newText) => setSearchText(newText)}
+      />
 
+      <HotelList
+        hotels={foundHotels}
+        emptyHeading={`No matches for “${searchText}”`}
+      />
+    </div>
+  );
 }

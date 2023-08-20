@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 
 function HotelsList() {
-  const [hotels, setHotels] = useState([]);
+  const [hotels, setHotels] = useState([])
 
   useEffect(() => {
-    getHotels();
-  }, []);
+    getHotels()
+  }, [])
 
   const getHotels = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/hotels");
+      const response = await fetch("http://localhost:4000/api/hotels")
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Network response was not ok")
       }
-      const jsonData = await response.json();
-      setHotels(jsonData);
+      const jsonData = await response.json()
+      setHotels(jsonData)
     } catch (error) {
-      console.error("Error fetching hotels:", error.message);
+      console.error("Error fetching hotels:", error.message)
     }
-  };
+  }
 
   // Assuming you have a `deleteHotels` function defined for deleting hotels.
   const deleteHotels = async (hotelId) => {
     // Implement the logic to delete the hotel with the specified ID.
     // Make sure to update the `hotels` state to reflect the changes.
-  };
+  }
 
   return (
     <div className="container mt-5">
@@ -58,7 +58,7 @@ function HotelsList() {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
-export default HotelsList;
+export default HotelsList

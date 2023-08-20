@@ -1,76 +1,98 @@
-var express = require("express");
-var router = express.Router();
-const db = require("../model/helper");
+var express = require("express")
+var router = express.Router()
+const db = require("../model/helper")
 
-// GET hotel list localhost:4000/api/hotels
-router.get("/", function(req, res, next) {
-  db("SELECT * FROM hotels;")
-    .then(results => {
-      res.send(results.data);
-    })
-    .catch(err => res.status(500).send(err));
-});
+// GET hotel list localhost:4000/api/hotels -TESTED AND WORKS
+router.get("/", async function (req, res) {
+  try {
+    const results = await db(`SELECT * FROM hotels;`)
+    /* console.log(results) */
+    res.send(results.data)
+  } catch (err) {
+    res.status(500).send(err)
+  }
+})
 
+//solution for GET one hotel- TESTED AND WORKS
+router.get("/:hotel_id", async function (req, res) {
+  const { hotel_id } = req.params
+  try {
+    const results = await db(
+      `SELECT * FROM hotels WHERE id = ("${hotel_id}") ORDER BY id ASC;`
+    )
+    res.send(results.data)
+  } catch (err) {
+    res.status(500).send(err)
+  }
+})
 
+//solution for GET hotels by location- DOESN'T WORK
+router.get("/location/:location", async function (req, res) {
+  try {
+    const { name } = req.params
+    /*  console.log(name) */
 
-//.then solution for GET one hotel
-router.get("/:hotel_id", function(req, res) {
-  const {hotel_id} = (req.params);
-  console.log(hotel_id);
-  db(`SELECT * FROM hotels WHERE id = ("${hotel_id}") ORDER BY id ASC;`)
-    .then(results => {
-      res.send(results.data);
-    })
-    .catch(err => res.status(500).send(err));
-});
+    const results = await db(
+      `SELECT * FROM hotels WHERE location = ("${name}") ORDER BY id ASC;`
+    )
+    res.send(results.data)
+  } catch (err) {
+    res.status(500).send(err)
+  }
+})
 
-//.then solution for GET hotels by location
-router.get("/location/:name", function(req, res) {
-  const {name} = req.params;
-  console.log("***", name);
-  db(`SELECT * FROM hotels WHERE location = "${name}" ORDER BY id ASC;`)
-  
-    .then(results => {
-      res.send(results.data);
-    })
-    .catch(err => res.status(500).send(err));
-});
+/* router.get("/hotels/search", async (req, res) => {
+  try {
+    const { location } = req.query
+    
+    // Implement your SQL query to fetch hotels based on the location
+    const query = "SELECT * FROM hotels WHERE location = ?;"
+    const [results, fields] = await pool.query(query, [location])
 
-//.then solution for GET hotels by price range
-router.get("/price/:price_range", function(req, res) {
-  const {price_range} = req.params;
-  db(`SELECT * FROM hotels WHERE price_range = "${price_range}" ORDER BY id ASC;`)
-    .then(results => {
-      res.send(results.data);
-    })
-    .catch(err => res.status(500).send(err));
-});
+    res.status(200).json(results)
+  } catch (err) {
+    console.error("Error fetching hotels:", err)
+    res.status(500).json({ error: "Internal Server Error" })
+  }
+}) */
+
+//solution for GET hotels by price range - DOESN'T WORK
+router.get("/price_range/:price_range", async function (req, res) {
+  try {
+    const { price_range } = req.params
+    const results = await db(
+      `SELECT * FROM hotels WHERE price_range = ("${price_range}") ORDER BY id ASC;`
+    )
+    res.send(results.data)
+  } catch (err) {
+    res.status(500).send(err)
+  }
+})
 
 //INSERT a new hotel into the DB
-router.post("/", async (req, res, next) => {
-try {
+router.post("/", async (req, res) => {
+  try {
     await db(
       `INSERT INTO hotels (image_URL, name, location, description, price_range, yoga, spa) VALUES ("${req.body.image_URL}", "${req.body.name}", "${req.body.location}" );`
-    );
-    const result = await db("SELECT * FROM hotels ORDER BY id ASC;"); //await second query,
+    )
+    const results = await db("SELECT * FROM hotels ORDER BY id ASC;") //await second query,
     //store the result of this await in this variable
-    res.send(result.data);
+    res.send(results.data)
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send(err)
   }
-});
+})
 
 // DELETE a hotel from the DB
-router.delete("/:hotel_id", async (req, res, next) => {
+router.delete("/:hotel_id", async (req, res) => {
   try {
-    const foundId = +req.params.hotel_id; //the + sign converts the string to a number
-    await db(`DELETE from hotels WHERE id = "${foundId}";`);
-    const result = await db("SELECT * FROM hotels ORDER BY id ASC;");
-    res.send(result.data);
-  
-} catch (err) {
-    res.status(500).send(err);
+    const foundId = +req.params.hotel_id //the + sign converts the string to a number
+    await db(`DELETE from hotels WHERE id = "${foundId}";`)
+    const results = await db("SELECT * FROM hotels ORDER BY id ASC;")
+    res.send(results.data)
+  } catch (err) {
+    res.status(500).send(err)
   }
-}); 
+})
 
 module.exports = router
