@@ -3,39 +3,33 @@ import { useEffect, useState } from "react"
 import "./App.css"
 import Splash from "./components/Splash"
 import HotelForm from "./components/HotelForm"
-import HotelsList from "./components/HotelsList"
+//import HotelsList from "./components/HotelsList"
 //import HotelCard from "./components/HotelCard";
-import NavBar from "./components/NavBar"
+//import NavBar from "./components/NavBar"
+import SearchResults from "./components/SearchResults"
 
-function App() {
-  useEffect(() => {
-    getHotels()
-  }, [])
+const App = () => {
+  const [searchResults, setSearchResults] = useState([])
 
-  const getHotels = async () => {
+  const searchHotel = async (location) => {
     try {
-      const response = await fetch("http://localhost:4000/api/hotels")
-      if (!response.ok) {
-        throw new Error("Network response was not ok")
-      }
-      const jsonData = await response.json()
-      getHotels(jsonData)
+      const response = await fetch(
+        `http://localhost:4000/api/hotels/location/${location}`
+      )
+      const data = await response.json()
+      setSearchResults(data)
     } catch (error) {
-      console.error("Error fetching hotels:", error.message)
+      console.error("Error fetching data:", error)
     }
   }
 
   return (
     <div className="container mt-2">
-      <Splash />
       {/* <NavBar /> */}
-
-      <div>
-        {/* Pass the searchHotel function to the HotelForm component */}
-        <HotelForm />
-        {/* Pass the searchResult to the HotelsList component */}
-        <HotelsList />
-      </div>
+      <Splash />
+      <h2>Hotel Search</h2>
+      <HotelForm searchHotel={searchHotel} />
+      <SearchResults results={searchResults} />
     </div>
   )
 }

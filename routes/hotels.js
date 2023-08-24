@@ -54,10 +54,10 @@ router.get("/price_range/:price_range", async function (req, res) {
 
 //solution for GET hotels by yoga onsite
 router.get("/yoga", async function (req, res) {
-  const { price_range } = req.params
+  const { yoga } = req.params
   try {
     const results = await db(
-      `SELECT * FROM hotels WHERE price_range = ("${price_range}") ORDER BY id ASC;`
+      `SELECT * FROM hotels WHERE yoga = ("${yoga}") ORDER BY id ASC;`
     )
     res.send(results.data)
   } catch (err) {

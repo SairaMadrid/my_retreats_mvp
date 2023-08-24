@@ -1,24 +1,27 @@
-import React from 'react'
+import React from "react"
 
- function HotelCard() {
-    const [hotel, setHotel] = useState([]);
-
-useEffect(() => {
-  getHotelbyId();
-}, []);
-
-const getHotelbyId = async () => {
-  try {
-    const response = await fetch("http://localhost:4000/api/hotels/1");
-    const jsonData = await response.json();
-
-    setHotel(jsonData);
-  } catch (error) {
-
-    console.error(err.message);
-  }
-};
-  return //how do I style each card?
+const HotelCard = ({ hotel }) => {
+  return (
+    <div className="col-md-4 mb-4">
+      <div className="card">
+        <img
+          src={hotel.image_URL}
+          className="card-img-top rounded"
+          alt={hotel.name} // Add an alt attribute for accessibility
+        />
+        <div className="card-body">
+          <p className="card-title">{hotel.name}</p>
+          <p className="card-text">Location: {hotel.location}</p>
+          <p className="card-text">Price: {hotel.price_range}</p>
+          <div className="container text-center">
+            <div>
+              <i className="fa-solid fa-heart"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
-export default HotelCard;
+export default HotelCard

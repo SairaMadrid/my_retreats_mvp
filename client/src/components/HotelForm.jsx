@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 
-function HotelForm({ searchHotel }) {
-  const initialHotelState = {
-    location: "Alicante",
+/* const initialHotelState = {
+    location: "",
     price_range: "",
     yoga: false,
     spa: false,
@@ -21,35 +20,43 @@ function HotelForm({ searchHotel }) {
   const handleSubmit = (event) => {
     event.preventDefault()
     searchHotel(newHotel) // Call the searchHotel function with the newHotel state
+  } */
+function HotelForm({ searchHotel }) {
+  const [location, setLocation] = useState("")
+
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value)
+  }
+
+  const handleSearch = () => {
+    if (location) {
+      searchHotel(location)
+    }
   }
 
   return (
     <div>
-      <form className="mt-5" onSubmit={handleSubmit}>
+      {/* <form className="mt-5" onSubmit={handleSubmit}>
         <div className="row mt-5">
-          <div className="col">
-            <label className="text-start mx-1 form-label">Location:</label>
-            <select
-              className="form-select mt-1"
-              name="location"
-              value={newHotel.location}
-              onChange={handleChange}
-            >
-              <option value="select">Select...</option>
-              <option value="Alicante">Alicante</option>
-              <option value="Madrid">Madrid</option>
-              <option value="Amsterdam">Amsterdam</option>
-              <option value="Berlin">Berlin</option>
-            </select>
-            <button
-              id="buttonLocation"
-              className="btn btn-outline-primary mt-1"
-            >
-              Go!
-            </button>
+          <div className="col"> */}
+      <label className="text-start mx-1 form-label">Select a location:</label>
+      <select id="location" name="location" onChange={handleLocationChange}>
+        <option value="select">Select...</option>
+        <option value="Alicante">Alicante</option>
+        <option value="Madrid">Madrid</option>
+        <option value="Amsterdam">Amsterdam</option>
+        <option value="Berlin">Berlin</option>
+      </select>
+      <button
+        id="buttonLocation"
+        className="btn btn-outline-primary mt-1"
+        onClick={handleSearch}
+      >
+        Go!
+      </button>
 
-            <div className="col">
-              {/* <label className="text-start mx-1 form-label">Price range:</label>
+      <div className="col">
+        {/* <label className="text-start mx-1 form-label">Price range:</label>
               <select
                 className="form-select mt-1"
                 name="price_range"
@@ -61,8 +68,8 @@ function HotelForm({ searchHotel }) {
                 <option value="mid range">Mid range</option>
                 <option value="luxury">Luxury</option>
               </select> */}
-              <div className="col">
-                {/* <label className="text-start mx-1">Yoga onsite?</label>
+        <div className="col">
+          {/* <label className="text-start mx-1">Yoga onsite?</label>
                 <input
                   type="checkbox"
                   className="mt-3"
@@ -70,8 +77,8 @@ function HotelForm({ searchHotel }) {
                   checked={newHotel.yoga}
                   onChange={handleChange}
                 /> */}
-                <div className="col">
-                  {/* <label className="text-start mx-1">Spa?</label>
+          <div className="col">
+            {/* <label className="text-start mx-1">Spa?</label>
                   <input
                     type="checkbox"
                     className="mt-3"
@@ -79,17 +86,17 @@ function HotelForm({ searchHotel }) {
                     checked={newHotel.spa}
                     onChange={handleChange}
                   /> */}
-                </div>
-              </div>
-            </div>
-            {/* <button type="submit" className="btn btn-outline-primary mt-1">
-              Find hotels
-            </button> */}
-            <br />
           </div>
         </div>
-      </form>
+      </div>
+      {/* <button type="submit" className="btn btn-outline-primary mt-1">
+              Find hotels
+            </button> */}
+      <br />
     </div>
+    /* </div>
+      </form>
+    </div> */
   )
 }
 
