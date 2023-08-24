@@ -2,8 +2,10 @@ import React from "react"
 
 const HotelCard = ({ hotel }) => {
   return (
-    <div className="col-md-4 mb-4">
-      <div className="card">
+    <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
+      <div className="card h-100">
+        {" "}
+        {/* Use h-100 to ensure equal card height */}
         <img
           src={hotel.image_URL}
           className="card-img-top rounded"
