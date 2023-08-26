@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-//import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"
 import "./App.css"
 import Splash from "./components/Splash"
 import HotelForm from "./components/HotelForm"
 //import HotelsList from "./components/HotelsList"
-//import HotelCard from "./components/HotelCard";
+//import HotelCard from "./components/HotelCard"
 import NavBar from "./components/NavBar"
 import SearchResults from "./components/SearchResults"
 
@@ -26,9 +26,10 @@ const App = () => {
   return (
     <div className="container mt-2">
       <NavBar />
-      {/* <Splash /> */}
-      {/* <h2>Hotel Search</h2>
-      <HotelForm searchHotel={searchHotel} /> */}
+      <Routes>
+        <Route exact path="/" element={<Splash />}></Route>
+        <Route path="/home" element={<HotelForm searchHotel={searchHotel} />} />
+      </Routes>
       <SearchResults results={searchResults} />
     </div>
   )

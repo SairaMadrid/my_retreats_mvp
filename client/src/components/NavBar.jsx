@@ -6,7 +6,6 @@ import logo from "../assets/logo.png"
 function Navbar() {
   const [click, setClick] = useState(false)
   const handleClick = () => setClick(!click)
-  const closeMobileMenu = () => setClick(false)
 
   return (
     <>
@@ -17,30 +16,19 @@ function Navbar() {
             {" "}
             <img className="logo" src={logo} alt="logo" />
           </Link>
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
-          </div>
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/home" className="nav-links" onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Favourites
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/favourites"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Favourites
-              </Link>
-            </li>
-          </ul>
+
+          <div className="menu-icon" onClick={handleClick}></div>
+
+          <li className="nav-item">
+            <Link to="/home" className="nav-links">
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/favourites" className="nav-links">
+              Favourites
+            </Link>
+          </li>
         </div>
       </nav>
     </>

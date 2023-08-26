@@ -39,6 +39,7 @@ function HotelForm({ searchHotel }) {
       {/* <form className="mt-5" onSubmit={handleSubmit}>
         <div className="row mt-5">
           <div className="col"> */}
+      <h2>Hotel Search</h2>
       <label className="text-start mx-1 form-label">Select a location:</label>
       <select id="location" name="location" onChange={handleLocationChange}>
         <option value="select">Select...</option>
