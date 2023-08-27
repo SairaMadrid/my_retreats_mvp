@@ -15,6 +15,22 @@ const HotelCard = ({ hotel }) => {
           <p className="card-title">{hotel.name}</p>
           <p className="card-text">Location: {hotel.location}</p>
           <p className="card-text">Price: {hotel.price_range}</p>
+          <p className="card-text">
+            Yoga:{" "}
+            {hotel.yoga ? (
+              <i className="fas fa-check-circle text-success"></i>
+            ) : (
+              <i className="fas fa-times-circle text-danger"></i>
+            )}
+          </p>
+          <p className="card-text">
+            Spa:{" "}
+            {hotel.spa ? (
+              <i className="fas fa-check-circle text-success"></i>
+            ) : (
+              <i className="fas fa-times-circle text-danger"></i>
+            )}
+          </p>
           <div className="container text-center">
             <div>
               <i className="fa-solid fa-heart"></i>

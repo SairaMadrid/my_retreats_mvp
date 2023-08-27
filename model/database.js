@@ -23,9 +23,12 @@ con.connect(function (err) {
   con.query(sql, function (err, result) {
     if (err) throw err
     console.log("Table creation `hotels` was successful!")
-
-    console.log("Closing...")
+    // Close the connection after the table creation is complete
+    con.end(function (err) {
+      if (err) throw err
+      console.log("Connection closed.")
+    })
   })
-
-  con.end()
 })
+
+module.exports = con
