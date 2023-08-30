@@ -14,21 +14,23 @@ function Navbar() {
           {/* Logo */}
           <Link className="navbar-brand" to="/">
             {" "}
-            <img className="logo" src={logo} alt="logo" />
+            <img
+              className="logo"
+              src={logo}
+              alt="logo"
+              style={{ width: "150px" }}
+            />
           </Link>
 
           <div className="menu-icon" onClick={handleClick}></div>
 
-          <li className="nav-item">
-            <Link to="/home" className="nav-links">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/favourites" className="nav-links">
-              Favourites
-            </Link>
-          </li>
+          <Link to="/home" className="nav-links">
+            Home
+          </Link>
+
+          <Link to="/favourites" className="nav-links">
+            Favourites
+          </Link>
         </div>
       </nav>
     </>
