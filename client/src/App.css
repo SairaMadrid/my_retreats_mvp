@@ -1,23 +1,86 @@
 .btn btn-success {
-    margin-top: 20px;
-
+  margin-top: 20px;
 }
 
 h1 {
-    color: blue;
+  color: blue;
 }
 
 .form-label {
-    color: blueviolet;
+  color: blueviolet;
 }
 
 body {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .checkbox {
-    color: blueviolet;
+  color: blueviolet;
 }
 
+/* Search results popup window styling */
+.description-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure the overlay is on top */
+}
 
-   
+.modal-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  overflow: auto;
+}
+
+/* .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: red;
+  font-size: 18px;
+} */
+
+.hotel-description {
+  margin-top: 15px;
+}
+
+.hotel-card {
+  margin-bottom: 20px; /* Adjust margin to control vertical spacing between cards */
+  padding: 10px; /* Add padding for inner content spacing */
+  border: 1px solid #ccc; /* Add a border for visual separation */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a box-shadow for a subtle lift */
+  background-color: white; /* Set a white background color */
+  transition: transform 0.2s ease-in-out; /* Add a smooth transition effect */
+}
+
+.hotel-card:hover {
+  transform: translateY(-5px); /* Add a lift effect on hover */
+}
+
+/* favourite icon styling */
+/* .heart-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+
+.favorite {
+  color: red;
+} */
