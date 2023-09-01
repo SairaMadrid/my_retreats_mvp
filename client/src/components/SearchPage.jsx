@@ -20,9 +20,11 @@ function SearchPage() {
   }
 
   return (
-    <div>
-      <HotelForm searchHotel={searchHotel} />
-      {showSearchResults && <SearchResults results={searchResults} />}
+    <div className="search-page-container">
+      <div className="search-page-content text-center">
+        <HotelForm searchHotel={searchHotel} />
+        {showSearchResults && <SearchResults results={searchResults} />}
+      </div>
     </div>
   )
 }

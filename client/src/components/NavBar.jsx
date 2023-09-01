@@ -18,19 +18,23 @@ function Navbar() {
               className="logo"
               src={logo}
               alt="logo"
-              style={{ width: "150px" }}
+              style={{ width: "300px" }}
             />
           </Link>
-
           <div className="menu-icon" onClick={handleClick}></div>
-
-          <Link to="/home" className="nav-links">
-            Home
-          </Link>
-
-          <Link to="/favourites" className="nav-links">
-            Favourites
-          </Link>
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link to="/home" className="nav-links">
+                <i className="fas fa-search"> Search </i>
+                <br></br>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/favourites" className="nav-links ml-3">
+                <i className="fas fa-heart"> Favourites</i> {/* Heart icon */}
+              </Link>
+            </li>
+          </ul>
         </div>
       </nav>
     </>

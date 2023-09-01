@@ -70,7 +70,8 @@ body {
 }
 
 /* favourite icon styling */
-/* .heart-icon {
+
+.heart-icon {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -83,7 +84,7 @@ body {
 
 .favorite {
   color: red;
-} */
+}
 
 /* Navbar style */
 
@@ -91,14 +92,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f8f9fa;
+  background-color: transparent;
   padding: 10px 20px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* z-index: 100; */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  */
 }
 
 .navbar {
@@ -116,4 +117,23 @@ body {
 .nav-link {
   text-decoration: none;
   color: #333;
+}
+
+/*Splash and Search pages*/
+.splash-container,
+.search-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* This will make the container take up the full viewport height */
+}
+
+.splash-content,
+.search-page-content {
+  text-align: center;
+}
+
+.results-container {
+  max-height: 400px; /* Set a maximum height for the container */
+  overflow-y: auto;
 }
