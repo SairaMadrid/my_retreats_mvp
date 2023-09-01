@@ -2,9 +2,14 @@ import React, { useState } from "react"
 
 const HotelCard = ({ hotel }) => {
   const [isFavorite, setIsFavorite] = useState(false)
+  const [showDescription, setShowDescription] = useState(false)
 
   const toggleFavorite = () => {
     setIsFavorite((prevState) => !prevState)
+  }
+
+  const toggleDescription = () => {
+    setShowDescription((prevState) => !prevState)
   }
 
   return (
@@ -56,7 +61,7 @@ const HotelCard = ({ hotel }) => {
               <i className="fas fa-times-circle text-danger"></i>
             )}
           </p>
-          <a
+          {/* <a
             href="#!"
             className="read-more"
             onClick={(e) => {
@@ -65,7 +70,7 @@ const HotelCard = ({ hotel }) => {
             }}
           >
             Read More
-          </a>
+          </a> */}
         </div>
       </div>
     </div>

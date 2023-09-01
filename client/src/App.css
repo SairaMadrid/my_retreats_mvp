@@ -133,7 +133,9 @@ body {
   text-align: center;
 }
 
+/* Style the scrollbar for the container */
 .results-container {
-  max-height: 400px; /* Set a maximum height for the container */
+  max-height: 500px; /* Set a maximum height for the container */
+  overflow-x: auto; /* Enable horizontal scrollbar only */
   overflow-y: auto;
 }
