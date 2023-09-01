@@ -6,6 +6,7 @@ const cors = require("cors") // add at the top
 
 var indexRouter = require("./routes/index")
 var hotelsRouter = require("./routes/hotels")
+var reviewsRouter = require("./routes/reviews")
 
 var app = express()
 
@@ -19,6 +20,7 @@ app.use(cookieParser())
 
 app.use("/", indexRouter)
 app.use("/api/hotels", hotelsRouter)
+app.use("/api/reviews", reviewsRouter)
 
 /* const PORT = 4000
 app.listen(PORT, () => {
