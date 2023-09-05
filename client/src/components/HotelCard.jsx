@@ -18,7 +18,7 @@ const HotelCard = ({ hotel }) => {
         {/* <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
       <div className="card h-100"> */}
         <img
-          src={hotel.image_URL}
+          src={hotel["image URL"]}
           className="card-img-top rounded"
           alt={hotel.name} // Add an alt attribute for accessibility
           style={{ maxHeight: "200px", objectFit: "cover" }}
