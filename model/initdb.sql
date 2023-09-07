@@ -28,4 +28,12 @@ INSERT INTO hotels (`image URL`, name, location, description, `price range`, yog
 INSERT INTO hotels (`image URL`, name, location, description, `price range`, yoga, spa) VALUES ('https://cf.bstatic.com/xdata/images/hotel/max1024x768/260849625.jpg?k=ea423e44ddbbbd4e5e7d01389bb52b79ab2413885e14c91d4dc88ed51515a667&o=&hp=1', 'Aspria Berlin Ku damm', 'Berlin','An urban retreat spread over six floors. The largest club of its kind in Europe, right in the heart of Berlin. Expansive training areas and an indoor pool.', 'mid range', 1, 1);   
 INSERT INTO hotels (`image URL`, name, location, description, `price range`, yoga, spa) VALUES ('https://www.amanogroup.de/wp-content/uploads/2016/06/amanogroup_hotels_amanohome_top_1.jpg', 'AMANO HOME Apartments', 'Berlin','AMANO Home is located at one of Berlin’s most exciting crossroads: Torstraße, Schönhauser Allee, and Alte Schönhauser Straße. The Berlin Cathedral is just a ten-minute walk away. Fancy some art galleries for every taste?', 'luxury', 1, 0);   
 INSERT INTO hotels (`image URL`, name, location, description, `price range`, yoga, spa) VALUES ('https://www.thevintagelisbon.com/wp-content/uploads/2019/08/vintage-delux-landscape-1-1196x679.jpg', 'Townhouse Berlin', 'Berlin','47 studios and suites, each room with a special flair. Large windows let plenty of light into the rooms. Free high-speed Wifi and a fully equipped kitchen are also part of the facilities. View: city or garden - your choice.', 'luxury', 0, 1);   
-INSERT INTO hotels (`image URL`, name, location, description, `price range`, yoga, spa) VALUES ('https://www.visitberlin.de/system/files/styles/visitberlin_bleed_header_visitberlin_mobile_1x/private/image/mowuestenhagen_visitberlin_01_CircusHotel_047_web.jpg?h=1c9b88c9&itok=x35chrOM', 'The Circus Hotel', 'Berlin','The Circus Hotel is a boutique, design-orientated hotel in Berlin-Mitte, housed in a beautifully restored 19th-century landmark-protected building', 'budget', 1, 1);                         
+INSERT INTO hotels (`image URL`, name, location, description, `price range`, yoga, spa) VALUES ('https://www.visitberlin.de/system/files/styles/visitberlin_bleed_header_visitberlin_mobile_1x/private/image/mowuestenhagen_visitberlin_01_CircusHotel_047_web.jpg?h=1c9b88c9&itok=x35chrOM', 'The Circus Hotel', 'Berlin','The Circus Hotel is a boutique, design-orientated hotel in Berlin-Mitte, housed in a beautifully restored 19th-century landmark-protected building', 'budget', 1, 1);  
+
+CREATE TABLE `favourites` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `hotel_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`hotel_id`) REFERENCES `hotels` (`id`),
+  
+);

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import HotelCard from "./HotelCard"
 
-const SearchResults = ({ results }) => {
+const SearchResults = ({ results, onToggleFavourite }) => {
   const [selectedHotel, setSelectedHotel] = useState(null)
 
   const toggleDescription = (hotel) => {
@@ -25,7 +25,10 @@ const SearchResults = ({ results }) => {
                   >
                     <a href="#!">{hotel.name}</a>
                   </h5>
-                  <HotelCard hotel={hotel} />
+                  <HotelCard
+                    hotel={hotel}
+                    onToggleFavourite={onToggleFavourite}
+                  />
                   {selectedHotel === hotel && (
                     <div className="description-overlay">
                       <div className="modal-container">

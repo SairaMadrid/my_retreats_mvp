@@ -1,26 +1,50 @@
-import React, { useState } from "react"
+/* import React, { useState, useEffect } from "react"
 
-const HotelCard = ({ hotel }) => {
-  const [isFavorite, setIsFavorite] = useState(false)
-  const [showDescription, setShowDescription] = useState(false)
+const HotelCard = ({ hotel, onToggleFavourite }) => {
+  const [isFavourite, setIsFavourite] = useState(hotel.isFavorite)
 
-  const toggleFavorite = () => {
-    setIsFavorite((prevState) => !prevState)
+  useEffect(() => {
+    // Update the component state when the hotel's favourite status changes
+    setIsFavourite(hotel.isFavourite)
+  }, [hotel.isFavourite])
+
+  const toggleFavourite = () => {
+    // Update the state immediately to provide feedback to the user
+    setIsFavourite((prevState) => !prevState)
   }
 
-  const toggleDescription = () => {
-    setShowDescription((prevState) => !prevState)
-  }
+  // Notify the parent component that the favourite status has changed
+  onToggleFavourite(hotel.id, !isFavourite)
+
+  // Make an API request to add/remove the hotel from favorites
+  const apiUrl = `/api/favourites/${hotel.id}` // Adjust the API endpoint
+  fetch(apiUrl, {
+    method: "POST", // Use POST or PUT based on your API design
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to toggle favourite")
+      }
+      // Handle the API response as needed, e.g., you can parse JSON response
+      return response.json()
+    })
+    .then((data) => {
+      // Handle the data if needed
+      console.log("API Response Data:", data)
+    })
+    .catch((error) => {
+      console.error("Error:", error)
+      // Revert the state if there is an error
+      setIsFavourite((prevState) => !prevState)
+    })
 
   return (
     <div className="card h-100 hotel-card">
       <div style={{ position: "relative" }}>
-        {/* <div className="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div className="card h-100"> */}
         <img
           src={hotel["image URL"]}
           className="card-img-top rounded"
-          alt={hotel.name} // Add an alt attribute for accessibility
+          alt={hotel.name}
           style={{ maxHeight: "200px", objectFit: "cover" }}
         />
         <div
@@ -32,17 +56,16 @@ const HotelCard = ({ hotel }) => {
           }}
         >
           <div
-            className={`heart-icon ${isFavorite ? "favorite" : ""}`}
-            onClick={toggleFavorite}
+            className={`heart-icon ${isFavourite ? "favourite" : ""}`}
+            onClick={toggleFavourite}
           >
             <i
               className="fa-solid fa-heart"
-              style={{ color: isFavorite ? "red" : "white" }}
+              style={{ color: isFavourite ? "red" : "white" }}
             ></i>
           </div>
         </div>
         <div className="card-body">
-          {/* <p className="card-title">{hotel.name}</p> */}
           <p className="card-text">Location: {hotel.location}</p>
           <p className="card-text">Price: {hotel.price_range}</p>
           <p className="card-text">
@@ -61,16 +84,98 @@ const HotelCard = ({ hotel }) => {
               <i className="fas fa-times-circle text-danger"></i>
             )}
           </p>
-          {/* <a
-            href="#!"
-            className="read-more"
-            onClick={(e) => {
-              e.preventDefault() // Prevent default link behavior
-              // Handle read more logic here if needed
-            }}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default HotelCard */
+
+import React, { useState, useEffect } from "react"
+
+const HotelCard = ({ hotel, onToggleFavourite }) => {
+  const [isFavourite, setIsFavourite] = useState(hotel.isFavourite)
+
+  useEffect(() => {
+    // Update the component state when the hotel's favourite status changes
+    setIsFavourite(hotel.isFavourite)
+  }, [hotel.isFavourite])
+
+  const toggleFavourite = () => {
+    // Update the state immediately to provide feedback to the user
+    setIsFavourite((prevState) => !prevState)
+
+    const apiUrl = `/api/favourites/${hotel.id}`
+    fetch(apiUrl, {
+      method: "PUT", // Use POST or PUT based on your API design
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to toggle favourite")
+        }
+        // Handle the API response as needed, e.g., you can parse JSON response
+        return response.json()
+      })
+      .then((data) => {
+        // Handle the data if needed
+        console.log("API Response Data:", data)
+        // Notify the parent component that the favourite status has changed
+        onToggleFavourite(hotel.id, !isFavourite)
+      })
+      .catch((error) => {
+        console.error("Error:", error)
+        // Revert the state if there is an error
+        setIsFavourite((prevState) => !prevState)
+      })
+  }
+
+  return (
+    <div className="card h-100 hotel-card">
+      <div style={{ position: "relative" }}>
+        <img
+          src={hotel["image URL"]}
+          className="card-img-top rounded"
+          alt={hotel.name}
+          style={{ maxHeight: "200px", objectFit: "cover" }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            zIndex: 1,
+          }}
+        >
+          <div
+            className={`heart-icon ${isFavourite ? "favourite" : ""}`}
+            onClick={toggleFavourite}
           >
-            Read More
-          </a> */}
+            <i
+              className="fa-solid fa-heart"
+              style={{ color: isFavourite ? "red" : "white" }}
+            ></i>
+          </div>
+        </div>
+        <div className="card-body">
+          <p className="card-text">Location: {hotel.location}</p>
+          <p className="card-text">Price: {hotel.price_range}</p>
+          <p className="card-text">
+            Yoga:{" "}
+            {hotel.yoga ? (
+              <i className="fas fa-check-circle text-success"></i>
+            ) : (
+              <i className="fas fa-times-circle text-danger"></i>
+            )}
+          </p>
+          <p className="card-text">
+            Spa:{" "}
+            {hotel.spa ? (
+              <i className="fas fa-check-circle text-success"></i>
+            ) : (
+              <i className="fas fa-times-circle text-danger"></i>
+            )}
+          </p>
         </div>
       </div>
     </div>

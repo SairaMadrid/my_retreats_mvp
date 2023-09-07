@@ -6,6 +6,7 @@ import Splash from "./components/Splash"
 //import HotelCard from "./components/HotelCard"
 import NavBar from "./components/NavBar"
 import SearchPage from "./components/SearchPage"
+import Favourites from "./components/Favourites"
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Splash />}></Route>
         <Route path="/home" element={<SearchPage />} />
+        <Route path="/favourites" element={<Favourites />} />
       </Routes>
     </div>
   )
