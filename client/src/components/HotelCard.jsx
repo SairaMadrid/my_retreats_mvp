@@ -106,7 +106,7 @@ const HotelCard = ({ hotel, onToggleFavourite }) => {
     // Update the state immediately to provide feedback to the user
     setIsFavourite((prevState) => !prevState)
 
-    const apiUrl = `/api/favourites/${hotel.id}`
+    const apiUrl = `http://localhost:4000/api/favourites/favourites/${hotel.id}`
     fetch(apiUrl, {
       method: "PUT", // Use POST or PUT based on your API design
     })

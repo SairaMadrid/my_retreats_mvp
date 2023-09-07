@@ -11,7 +11,7 @@ class Favourites extends Component {
   // Function to add a hotel to favorites
   async addToFavorites(hotelId) {
     // Define the API endpoint URL for adding a hotel to favorites
-    const apiUrl = `/api/favourites/${hotelId}`
+    const apiUrl = `/favourites/${hotelId}`
 
     try {
       // Make a POST request to the API endpoint

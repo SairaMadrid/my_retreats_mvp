@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require("../model/helper")
 
 // POST route to mark a hotel as a favourite
-router.post("/favourites/:hotelId", (req, res) => {
+router.post("/api/favourites/favourites/:hotelId.", (req, res) => {
   const { hotelId } = req.params
 
   // Insert a record into the 'favourites' table with the given hotelId
@@ -20,7 +20,7 @@ router.post("/favourites/:hotelId", (req, res) => {
 })
 
 // PUT route to update the favourite status of a hotel
-router.put("/favourites/:hotelId", (req, res) => {
+router.put("/api/favourites/favourites/:hotelId.", (req, res) => {
   const { hotelId } = req.params
   const { isFavourite } = req.body
 

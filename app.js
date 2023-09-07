@@ -11,13 +11,13 @@ var favouritesRouter = require("./routes/favourites")
 
 var app = express()
 
-app.use(
+/* app.use(
   cors({
     origin: "http://localhost:5173", // Replace with your frontend's URL
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    methods: "GET,HEAD,PUT,POST",
     credentials: true,
   }) // add after 'app' is created
-)
+) */
 
 app.use(logger("dev"))
 app.use(express.json())
@@ -27,11 +27,11 @@ app.use(cookieParser())
 
 app.use("/", indexRouter)
 app.use("/api/hotels", hotelsRouter)
+app.use("/api/favourites", favouritesRouter)
 
 /* app.use("/api/reviews", reviewsRouter)
  */
 
-app.use("/api/favourites", favouritesRouter)
 /* const PORT = 4000
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
