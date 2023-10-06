@@ -3,7 +3,7 @@ CREATE TABLE `hotels`(`id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 `name` VARCHAR(255) NOT NULL,
 `location` VARCHAR(255) NOT NULL,
 `description` TEXT NULL,
-`price range` VARCHAR(255) NOT NULL,
+`price range` ENUM('budget', 'mid range', 'luxury') NOT NULL,
 `yoga` tinyint NOT NULL,
 `spa` tinyint NOT NULL, PRIMARY KEY(`id`));
 

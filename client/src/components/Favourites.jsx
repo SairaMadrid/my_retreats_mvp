@@ -8,9 +8,7 @@ class Favourites extends Component {
     }
   }
 
-  // Function to add a hotel to favorites
   async addToFavorites(hotelId) {
-    // Define the API endpoint URL for adding a hotel to favorites
     const apiUrl = `/favourites/${hotelId}`
 
     try {
@@ -20,7 +18,7 @@ class Favourites extends Component {
         headers: {
           "Content-Type": "application/json", // Adjust the content type as needed
         },
-        // You can include a request body if needed, e.g., JSON data
+
         body: JSON.stringify({ hotelId }),
       })
 

@@ -112,11 +112,20 @@ body {
 .nav-links {
   display: flex;
   gap: 20px;
+  justify-content: flex-end;
 }
 
 .nav-link {
   text-decoration: none;
   color: #333;
+}
+
+.fa-search {
+  margin-right: -15px;
+}
+
+.fa-heart {
+  margin-right: -15px;
 }
 
 /*Splash and Search pages*/
@@ -136,6 +145,4 @@ body {
 /* Style the scrollbar for the container */
 .results-container {
   max-height: 500px; /* Set a maximum height for the container */
-  overflow-x: auto; /* Enable horizontal scrollbar only */
-  overflow-y: auto;
 }

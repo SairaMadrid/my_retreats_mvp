@@ -40,7 +40,7 @@ router.get("/location/:location", async function (req, res) {
 })
 
 //solution for GET hotels by price range - TESTED AND WORKS ON POSTMAN
-router.get("/price_range/:price_range", async function (req, res) {
+router.get("/price range/:price range", async function (req, res) {
   const { price_range } = req.params
   try {
     const results = await db(
